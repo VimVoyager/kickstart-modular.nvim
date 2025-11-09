@@ -60,6 +60,9 @@ return {
         --   mappings = {
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
+        --   previewer = {
+        --     wrap = true,
+        --   },
         -- },
         -- pickers = {}
         extensions = {

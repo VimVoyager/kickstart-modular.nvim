@@ -93,6 +93,8 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
+vim.opt.clipboard = 'unnamedplus'
+
 -- [[ Setting options ]]
 require 'options'
 
@@ -104,6 +106,22 @@ require 'lazy-bootstrap'
 
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
-
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    'c',
+    'cpp',
+    'h',
+    'hpp',
+    'cc',
+    'cxx',
+  },
+  callback = function()
+    vim.opt_local.shiftwidth = 4 -- Indentation width
+    vim.opt_local.tabstop = 4 -- Tab display width
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.expandtab = true
+  end,
+})
+-- [[ Language specific indentation settings
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
